@@ -1,13 +1,16 @@
 import React from 'react'
+import memesData from '../memesData';
 
 export default function Meme() {
 
-    const [meme, setMeme] = React.useState({
-        topText: "",
-        bottomText: "",
-        randomImage: "https://i.imgflip.com/3si4.jpg"
-    })
+    const [meme, setMeme] = React.useState(memesData.data.memes)
     const [allMemes, setAllMemes] = React.useState([]);
+
+    const src_link = meme.map(link => {
+        return (
+            link.url
+        )
+    })
     return (
         <main>
             <form className="form">
@@ -27,7 +30,11 @@ export default function Meme() {
                     Get a new meme image 🖼
                 </button>
             </form>
-            <img style={{ marginLeft: "450px" }} src={meme.randomImage} />
+            <img style={{ marginLeft: "450px" }} src={meme.map(link => {
+                return (
+                    link.url
+                )
+            })} />
         </main>
     )
 }
