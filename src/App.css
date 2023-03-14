@@ -48,12 +48,15 @@ body {
 
 .form--button {
     grid-column: 1 / -1;
-    font-family: "Karla", sans-serif;
-    border-radius: 5px;
-    background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
-    color: white;
+    text-align: center;
+    background: linear-gradient(90deg, #711F8D 1.14%, #A818DA 100%);
+    color: #fff;
     border: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .meme {
