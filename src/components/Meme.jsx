@@ -3,34 +3,59 @@ import memesData from '../memesData';
 
 export default function Meme() {
 
-    const [meme, setMeme] = React.useState(memesData.data.memes)
+    const [meme, setMeme] = React.useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "https://i.imgflip.com/3si4.jpg"
+    })
     const [allMemes, setAllMemes] = React.useState([]);
+    fetch("https://api.imgflip.com/get_memes").then(res => res.json()).then(data => setAllMemes(data.data.memes))
+    function getImage() {
+        const randomNumber = Math.floor(Math.random() * allMemes.length);
+        const url = allMemes[randomNumber].url;
+        setMeme(prevMeme => {
+            return {
+                ...prevMeme,
+                randomImage: url
+            }
+        })
+    }
+
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            [name]: value
+        }))
+    }
 
     return (
         <main>
             <form className="form">
                 <input
-                    type="text"
+                    type='text'
                     placeholder="Top text"
-                    className="form--input"
+                    className='form-input'
+                    name="topText"
+                    value={meme.topText}
+                    onChange={handleChange}
                 />
                 <input
-                    type="text"
+                    type='text'
                     placeholder="Bottom text"
-                    className="form--input"
+                    className='form-input'
+                    name="bottomText"
+                    value={meme.bottomText}
+                    onChange={handleChange}
                 />
-                <button
-                    className="form--button"
-                >
+                <button className="form--button" onClick={getImage}>
                     Get a new meme image 🖼
                 </button>
             </form>
-            <div className='images'>
-                {meme.map(link => {
-                    return (
-                        <img src={link.url} />
-                    )
-                })}
+            <div className="meme">
+                <img src={meme.randomImage} className="meme-image" alt="meme-images" />
+                <h2 className="meme-text top">{meme.topText}</h2>
+                <h2 className="meme-text bottom">{meme.bottomText}</h2>
             </div>
         </main>
     )
