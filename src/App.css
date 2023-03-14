@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap');
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-* {
     box-sizing: border-box;
 }
 
@@ -39,7 +33,7 @@ body {
 }
 
 .form {
-    margin: 50px 300px;
+    margin: 50px 350px;
     display: grid;
     grid-template: 40px 40px / 1fr 1fr;
     gap: 17px;
@@ -62,15 +56,37 @@ body {
     cursor: pointer;
 }
 
-img {
-    width: 100%;
+.meme {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
-.images {
-    margin: 0 500px;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.meme-image {
+    max-width: 100%;
+    border-radius: 3px;
+}
+
+.meme-text {
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15px 0;
+    padding: 0 5px;
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.top {
+    top: 0;
 }
